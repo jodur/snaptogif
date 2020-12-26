@@ -1,7 +1,7 @@
 # snaptogif
 Homeassistant custom component for converting snapshots (jpg) to a gif or mp4
 ****
-This component is developped by my need of creating a GIF of MP4 file from snapshot images that are created by the deepstack custom component. The component is designed for general use of converting snapshot to GIF or MP4, so it is useful for everyone who has to handle or deal with snapshots created by cameras of image processing software.
+This component is developed by my need of creating a GIF of MP4 file from snapshot images that are created by the deepstack custom component. The component is designed for general use of converting snapshot to GIF or MP4, so it is useful for everyone who has to handle or deal with snapshots created by cameras of image processing software.
 
 To use this component, copy the directory `snaptogif`and it contents to the `custom_components` directory of your homeassistant.
 
@@ -26,8 +26,8 @@ The service has to be called with the following calll-parameters:
 | sourcepath  |  	path of the directory where the snaphots are in | mandatory  |
 |  destinationpath |  path of the directory where the GIF should be created |  mandatory |
 |  filename |	Name for gif/mp3 file (without extension)   | optional, default=latest  |
-|  format |  `gif` or `mp4` |   |
-| excludelist  |  list of files to exclude in conversion |optional, default=`gif`   |
+|  format |  `gif` or `mp4` | optional, default='gif'   |
+| excludelist  |  list of files to exclude in conversion |optional   |
 | begintimestamp  |  begin timestamp | optional, format 'mm/dd/yyyy'   |
 | endtimestamp  | end timestamp  |  optional, format 'mm/dd/yyyy'   |
 
@@ -53,10 +53,10 @@ Example for usage:
 
 | Parameter  |Value   |
 | ------------ | ------------ |
-| sourcepath:  |  \config\snapshots\oprit |
-| destinationpath:  | \config\www  |
-| gifname:   |latest_oprit   |
-|  begintimestamp | '12-25-2020 23:24:24'  |
+| sourcepath:  |  /config/snapshots/oprit |
+| destinationpath:  | /config/www  |
+| filename:   |latest_oprit   |
+| begintimestamp | '12-25-2020 23:24:24'  |
 | endtimestamp: | '12-25-2020 23:24:40  |
 
 ### Events
