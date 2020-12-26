@@ -58,3 +58,47 @@ Example for usage:
 | gifname:   |latest_oprit   |
 |  begintimestamp | '12-25-2020 23:24:24'  |
 | endtimestamp: | '12-25-2020 23:24:40  |
+
+### Events
+
+When the service is called an event will be triggerd after **succesful** creation of the output file. This event could be used for example for notifications to the mobile app.
+
+The event to listen for is: `snaptogif`
+
+This could also be easily explored with the developers tool event viewer, were you can listen to this event. 
+
+The event data contains information about the "build" of the created output file.
+
+```json
+{
+    "event_type": "snaptogif",
+    "data": {
+        "Type": "gif_created",
+        "file": "mylatest.gif",
+        "Path": "/config/www",
+        "BeginTimeStamp": "26/12/2020 14:17:00",
+        "EndTimeStamp": "26/12/2020 14:17:59",
+        "NoComposedImages": 9,
+        "sourcepath": "/config/snapshots/achtertuin",
+        "sourcefiles": [
+            "deepstack_object_achtertuin_2020-12-26_14-17-02.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-03.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-04.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-06.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-07.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-08.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-14.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-15.jpg",
+            "deepstack_object_achtertuin_2020-12-26_14-17-16.jpg"
+        ]
+    },
+    "origin": "LOCAL",
+    "time_fired": "2020-12-26T21:37:36.411617+00:00",
+    "context": {
+        "id": "a3340e0c0b66813d7a18ac93effaa0da",
+        "parent_id": null,
+        "user_id": null
+    }
+}
+
+```
