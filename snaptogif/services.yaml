@@ -1,0 +1,25 @@
+start:
+  description: Start create GIF from snapshots
+  fields:
+    sourcepath:
+      description: path of the directory where the snaphots are in
+      example: 'config/snapshots'
+    destinationpath: 
+      description: path of the directory where the GIF should be created
+      example: 'config/www'    
+    filename:
+      description: Name for gif/mp4 file (OPTIONAL, default='latest')
+      example: 'latest'
+    format:
+       description: Output to gif or mp4 (OPTIONAL, default='gif')  
+       example: 'mp4'       
+    excludelist:
+        description: list of files (jpg) to exclude in the output
+        example: 'latest_snaphot.jpg'
+    begintimestamp:
+      description: Start time for snapshot to include (OPTIONAL, format mm/dd/yy hh:mm:ss)
+      example: '26/12/2021 12:00:00'
+    endtimestamp:
+      description: End time for snapshot to include (OPTIONAL, format mm/dd/yy hh:mm:ss)
+      example: '26/12/2021 13:00:00'
+    

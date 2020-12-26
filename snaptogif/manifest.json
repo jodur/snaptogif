@@ -1,0 +1,14 @@
+{
+        "domain": "snaptogif",
+        "name": "snapshots to GIF/MP4 creator",
+        "documentation": "https://github.com/jodur/snaptogif",
+        "requirements": [
+                "pillow",
+                "imageio",
+                "imageio-ffmpeg"
+        ],
+        "dependencies": [],
+        "codeowners": [
+                "@jodur"
+        ]
+}
