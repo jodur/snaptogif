@@ -3,10 +3,10 @@ start:
   fields:
     sourcepath:
       description: path of the directory where the snaphots are in
-      example: 'config/snapshots'
+      example: '/config/snapshots'
     destinationpath: 
       description: path of the directory where the GIF should be created
-      example: 'config/www'    
+      example: '/config/www'    
     filename:
       description: Name for gif/mp4 file (OPTIONAL, default='latest')
       example: 'latest'
