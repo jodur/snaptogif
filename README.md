@@ -57,8 +57,8 @@ Example for usage:
 | destinationpath:  | /config/www  |
 | filename:   |latest_oprit   |
 | excludelist: | deepstack_object_camera_oprit_latest.jpg  |
-| begintimestamp | '25-12-2020 23:24:24'  |
-| endtimestamp: | '25-12-2020 23:24:40  |
+| begintimestamp | '25/12/2020 23:24:24'  |
+| endtimestamp: | '25/12/2020 23:24:40  |
 
 ### Events
 
