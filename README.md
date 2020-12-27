@@ -56,8 +56,9 @@ Example for usage:
 | sourcepath:  |  /config/snapshots/oprit |
 | destinationpath:  | /config/www  |
 | filename:   |latest_oprit   |
-| begintimestamp | '12-25-2020 23:24:24'  |
-| endtimestamp: | '12-25-2020 23:24:40  |
+| excludelist: | deepstack_object_camera_oprit_latest.jpg  |
+| begintimestamp | '25-12-2020 23:24:24'  |
+| endtimestamp: | '25-12-2020 23:24:40  |
 
 ### Events
 
@@ -100,5 +101,3 @@ The event data contains information about the "build" of the created output file
         "user_id": null
     }
 }
-
-```
