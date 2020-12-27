@@ -23,8 +23,8 @@ The service has to be called with the following calll-parameters:
 
 | Parameter  | Description  | additional  |
 | ------------ | ------------ | ------------ |
-| sourcepath  |  	path of the directory where the snaphots are in | mandatory  |
-|  destinationpath |  path of the directory where the GIF should be created |  mandatory |
+| sourcepath  |  	path of the directory where the snaphots are in | mandatory, directory must exist  |
+|  destinationpath |  path of the directory where the GIF should be created |  mandatory, directory must exist |
 |  filename |	Name for gif/mp3 file (without extension)   | optional, default=latest  |
 |  format |  `gif` or `mp4` | optional, default='gif'   |
 | excludelist  |  list of files to exclude in conversion |optional   |
