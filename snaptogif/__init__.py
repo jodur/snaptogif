@@ -28,13 +28,13 @@ SERVCE_PARAM_ENDTIME='endtimestamp'
 
 SNAPTOGIF_START_SCHEMA = vol.Schema(			
     {
-        vol.Required(SERVICE_PARAM_SOURCE): cv.string,
-		vol.Required(SERVICE_PARAM_DESTINATION): cv.string,
-		vol.Optional(SERVICE_PARAM_FILENAME,default='latest'):cv.string,
-		vol.Optional(SERVICE_PARAM_FORMAT,default='gif'):vol.All(cv.string,vol.In(['gif','mp4'])),
+        vol.Required(SERVICE_PARAM_SOURCE): cv.isdir,
+		vol.Required(SERVICE_PARAM_DESTINATION): cv.isdir,
+		vol.Optional(SERVICE_PARAM_FILENAME,default='latest'):cv.matches_regex(r'^[^<>:;,.?"*|/\\]+$'),
+		vol.Optional(SERVICE_PARAM_FORMAT,default='gif'):vol.In(['gif','mp4']),
 		vol.Optional(SERVICE_PARAM_EXCLUDE,default=[]):cv.ensure_list_csv,
-		vol.Optional(SERVICE_PARAM_BEGINTIME,default=''):cv.string,
-		vol.Optional(SERVCE_PARAM_ENDTIME,default=''):cv.string,
+		vol.Optional(SERVICE_PARAM_BEGINTIME,default=''):cv.matches_regex(r'[0-3][0-9]/[0-1][0-9]/\d{4} [0-2][0-9]:[0-5][0-9]:[0-5][0-9]'),
+		vol.Optional(SERVCE_PARAM_ENDTIME,default=''):cv.matches_regex(r'[0-3][0-9]/[0-1][0-9]/\d{4} [0-2][0-9]:[0-5][0-9]:[0-5][0-9]'),
     }
 	)
 
