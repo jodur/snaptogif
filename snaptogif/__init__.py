@@ -79,7 +79,7 @@ def createOutputfile(hass,call,files):
 							'path': outputfolder,
 							'beginTimeStamp': call.data[SERVICE_PARAM_BEGINTIME],
 							'endTimeStamp': call.data[SERVCE_PARAM_ENDTIME],
-							'no_Files': len(files),
+							'no_files': len(files),
 							'sourcepath': inputfolder,
 							'sourcefiles': files
             				}
