@@ -105,3 +105,32 @@ The `type` in the event shows which service originated the event.
         "user_id": null
     }
 }
+```
+### Example Script for use:
+The script below shows a usecase for this component. In this case i use a scheduler to trigger this script at 00:10:00 (During midnight). The script composes a mp4 from the snapshots taken the previous day and then the original snapshots are deleted. The mp4 filname has the datestamp in its filename so its alway easy to trace back.
+
+```yaml
+create_mp4_from_snapshots_oprit_previous_day:
+  alias: Create MP4 from snapshots oprit previous day
+  sequence:
+  - variables:
+      daysback: 1
+      begintime: '{{(now()-timedelta(days=daysback)).strftime("%d/%m/%Y")}} 00:00:00'
+      endtime: '{{(now()-timedelta(days=daysback)).strftime("%d/%m/%Y")}} 23:59:59'
+  - service: snaptogif.start
+    data:
+      sourcepath: /config/snapshots/oprit
+      destinationpath: /config/archive/oprit
+      filename: snapshots_oprit_{{(now()-timedelta(days=daysback)).strftime("%Y_%m_%d")}}
+      format: mp4
+      excludelist: deepstack_object_camera_oprit_latest.jpg
+      begintimestamp: '{{begintime}}'
+      endtimestamp: '{{endtime}}'
+  - service: snaptogif.delete
+    data:
+      sourcepath: /config/snapshots/oprit
+      excludelist: deepstack_object_camera_oprit_latest.jpg
+      begintimestamp: '{{begintime}}'
+      endtimestamp: '{{endtime}}'
+  mode: single
+```
