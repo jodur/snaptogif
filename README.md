@@ -80,9 +80,9 @@ The `type` in the event shows which service originated the event.
     "data": {
         "type": "start",
         "file": "mylatest.gif",
-        "Path": "/config/www",
-        "beginTimeStamp": "26/12/2020 14:17:00",
-        "endTimeStamp": "26/12/2020 14:17:59",
+        "destinationpath": "/config/www",
+        "begintimestamp": "26/12/2020 14:17:00",
+        "endtimeStamp": "26/12/2020 14:17:59",
         "no_files": 9,
         "sourcepath": "/config/snapshots/achtertuin",
         "sourcefiles": [
@@ -114,18 +114,26 @@ create_mp4_from_snapshots_oprit_previous_day:
   alias: Create MP4 from snapshots oprit previous day
   sequence:
   - variables:
-      daysback: 1
+      daysback: 0
       begintime: '{{(now()-timedelta(days=daysback)).strftime("%d/%m/%Y")}} 00:00:00'
       endtime: '{{(now()-timedelta(days=daysback)).strftime("%d/%m/%Y")}} 23:59:59'
+      fname: snapshots_oprit_{{(now()-timedelta(days=daysback)).strftime("%Y_%m_%d")}}
   - service: snaptogif.start
     data:
       sourcepath: /config/snapshots/oprit
       destinationpath: /config/archive/oprit
-      filename: snapshots_oprit_{{(now()-timedelta(days=daysback)).strftime("%Y_%m_%d")}}
+      filename: '{{fname}}'
       format: mp4
       excludelist: deepstack_object_camera_oprit_latest.jpg
       begintimestamp: '{{begintime}}'
       endtimestamp: '{{endtime}}'
+  - wait_for_trigger:
+    - platform: event
+      event_type: snaptogif
+      event_data:
+        type: start
+        destinationpath: /config/archive/oprit
+    timeout: 00:02:00
   - service: snaptogif.delete
     data:
       sourcepath: /config/snapshots/oprit

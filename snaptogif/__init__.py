@@ -76,9 +76,9 @@ def createOutputfile(hass,call,files):
 				_LOGGER.info(f'{outputfile} succesfully generated in: {outputfolder}')
 				eventdata={ 'type': SERVICE_START,
 							'file': outputfile,
-							'path': outputfolder,
-							'beginTimeStamp': call.data[SERVICE_PARAM_BEGINTIME],
-							'endTimeStamp': call.data[SERVCE_PARAM_ENDTIME],
+							'destinationpath': outputfolder,
+							'begintimestamp': call.data[SERVICE_PARAM_BEGINTIME],
+							'endtimestamp': call.data[SERVCE_PARAM_ENDTIME],
 							'no_files': len(files),
 							'sourcepath': inputfolder,
 							'sourcefiles': files
@@ -95,8 +95,8 @@ def deletefiles(hass,call,files):
 		  os.remove(os.path.join(inputfolder,file))
 		_LOGGER.info(f'Files succesfully removed from: {inputfolder}')
 		eventdata={ 'type': SERVICE_DEL,
-					'beginTimeStamp': call.data[SERVICE_PARAM_BEGINTIME],
-					'endTimeStamp': call.data[SERVCE_PARAM_ENDTIME],
+					'begintimestamp': call.data[SERVICE_PARAM_BEGINTIME],
+					'endTtimestamp': call.data[SERVCE_PARAM_ENDTIME],
 					'no_files': len(files),
 					'sourcepath': inputfolder,
 					'sourcefiles': files
@@ -117,8 +117,8 @@ def movefiles(hass,call,files):
 		  shutil.move(os.path.join(inputfolder,file),outputfolder)
 		_LOGGER.info(f'Files succesfully moved from: {inputfolder} to {outputfolder}')
 		eventdata={ 'type': SERVICE_MOVE,
-					'beginTimeStamp': call.data[SERVICE_PARAM_BEGINTIME],
-					'endTimeStamp': call.data[SERVCE_PARAM_ENDTIME],
+					'begintimestamp': call.data[SERVICE_PARAM_BEGINTIME],
+					'endtimestamp': call.data[SERVCE_PARAM_ENDTIME],
 					'no_files': len(files),
 					'sourcepath': inputfolder,
 					'destinationpath': outputfolder,
