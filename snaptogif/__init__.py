@@ -140,8 +140,14 @@ def setup(hass, config):
 		folder=call.data[SERVICE_PARAM_SOURCE]
 		files=os.listdir(folder)
 		
-		#only jpg files and filter out latest
-		files=[file for file in files if ".jpg" in file and file not in call.data[SERVICE_PARAM_EXCLUDE]]
+		'Allowed extentions for Servive start are jpg or png, for service move and delete also the possibile output extensions (jpg, mp4) are allowed '
+		if call.service==SERVICE_START:
+			ext=['.jpg','.png']
+		else:	
+			ext=['.jpg','.png','.mp4','gif']
+
+		#only files with selected extensios and filter out the excludelist
+		files=[file for file in files if any(x in file for x in ext ) and file not in call.data[SERVICE_PARAM_EXCLUDE]]
 		
 		#convert timestrings to epoch time
 		BeginTimestamp=0
@@ -162,7 +168,7 @@ def setup(hass, config):
 		if call.data[SERVICE_PARAM_BEGINTIME]==EPOCH_START and call.data[SERVCE_PARAM_ENDTIME]!=EPOCH_START:
 			files=[file for file in files if GetTimestampFile(folder,file)<=EndTimeStamp ]
 		
-		_LOGGER.debug(f'No of images found for snapshot {len(files)}')
+		_LOGGER.debug(f'No of images/files found for operation {len(files)}')
 		
 		#Call the corresponding service
 		if len(files)>0:		

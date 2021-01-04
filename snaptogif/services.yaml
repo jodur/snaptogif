@@ -23,13 +23,13 @@ start:
       description: End time for snapshot to include (OPTIONAL, format mm/dd/yy hh:mm:ss)
       example: '26/12/2021 13:00:00'
 delete:
-  description: Delete snapshots (jpg)  
+  description: Delete snapshots (jpg, gif or mp4)  
   fields:
     sourcepath:
       description: path of the directory where to delete the snapshots (jpg)
       example: '/config/snapshots'
     excludelist:
-        description: list of files (jpg) to exclude in the deletion
+        description: list of files (jpg, gif or mp4) to exclude in the deletion
         example: 'latest_snaphot.jpg'  
     begintimestamp:
       description: Start time for snapshot to include (OPTIONAL, format mm/dd/yy hh:mm:ss)
@@ -38,7 +38,7 @@ delete:
       description: End time for snapshot to include (OPTIONAL, format mm/dd/yy hh:mm:ss)
       example: '26/12/2021 13:00:00'
 move:
-  description: move snapshots (jpg)
+  description: move snapshots (jpg, gif or mp4)
   fields:
     sourcepath:
       description: path of the directory where the snaphots are in
@@ -47,7 +47,7 @@ move:
       description: path of the directory where tp move the snapshots
       example: '/config/archive'       
     excludelist:
-        description: list of files (jpg) to exclude in the move
+        description: list of files (jpg, gif or mp4) to exclude in the move
         example: 'latest_snaphot.jpg'
     begintimestamp:
       description: Start time for snapshot to include (OPTIONAL, format mm/dd/yy hh:mm:ss)
